@@ -1,0 +1,28 @@
+//import partials
+@import "../../../Partials/fonts";
+@import "../../../Partials/mediaqueries";
+@import "../../../Partials/animations";
+@import "../../../Partials/colors";
+
+.newnote {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+    border-right: 2px solid $purple;
+
+    &__title {
+        margin-top: 15px;
+        font-size: 20px;
+        text-align: center;
+        font-family: $headerStack;
+        color: $purple;
+    }
+}
+
+.newnote-form {
+    font-family: $fontStack;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

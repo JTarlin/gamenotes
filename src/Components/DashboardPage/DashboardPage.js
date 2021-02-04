@@ -1,5 +1,9 @@
 //component imports
 import Header from "../Header/Header";
+import NewNote from "./NewNote/NewNote";
+
+//styling import
+import "./DashboardPage.scss";
 
 export default function DashboardPage() {
 
@@ -8,8 +12,10 @@ export default function DashboardPage() {
     return (
         <div className="dashboardpage">
             <Header />
+            {/* creating a new note, opens the editor */}
+            <NewNote />
             {/* for once we have persistent data on the notes: */}
-            {/* <GameNotes /> */}
+            {/* <MyNotes /> */}
 
         </div>
     )
