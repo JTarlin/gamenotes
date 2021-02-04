@@ -1,0 +1,11 @@
+//import fancy title font "UnifrakturCook"
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
+$fancyStack: "UnifrakturCook", serif;
+
+//import serif font for headings "Cinzel"
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+$headerStack: "Cinzel", serif;
+
+//import regular sans font for text "Nanum Gothic"
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap');
+$fontStack: "Nanum Gothic", sans-serif;

@@ -1,0 +1,34 @@
+//styling for the welcome page
+
+//import partials
+@import "../../Partials/fonts";
+@import "../../Partials/mediaqueries";
+
+.welcomepage {
+    //style the background image of the welcome page
+    
+    height: 100vh;
+    width: 100%;
+
+    //styling for the content display
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__bg {
+        filter: blur(3px);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: url("../../Assets/welcomePageImg.jpg");
+        background-size: cover;
+        z-index: -1;
+    }
+
+    &__title {
+        color: white;
+        font-size: 12vw; //so that our title resizes automatically with screen size
+        text-shadow: 7px 7px 10px black;
+        font-family: $fancyStack;
+    }
+}
