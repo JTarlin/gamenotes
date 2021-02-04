@@ -1,3 +1,6 @@
+//dependency imports
+import {Link} from "react-router-dom";
+
 //styling imports
 import "./WelcomePage.scss";
 
@@ -11,7 +14,7 @@ export default function WelcomePage() {
                     GameNotes
                 </div>
                 <div className="welcomepage__buttons">
-                    <div className="welcomepage__button">Build as Guest</div>
+                    <Link to="/dashboard" className="welcomepage__button">Build as Guest</Link>
                     <div className="welcomepage__button">Account Login</div>
                 </div>
             </div>       

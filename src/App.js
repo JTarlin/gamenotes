@@ -7,6 +7,7 @@ import {
 
 //component imports
 import WelcomePage from "./Components/WelcomePage/WelcomePage";
+import DashboardPage from "./Components/DashboardPage/DashboardPage";
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           <WelcomePage/>
+        </Route>
+        <Route exact path="/dashboard">
+          <DashboardPage/>
         </Route>
       </Switch>
     </Router>
