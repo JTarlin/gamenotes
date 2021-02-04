@@ -28,11 +28,8 @@
     }
 
     &__title {
-        color: white;
-        font-size: 12vw; //so that our title resizes automatically with screen size
-        text-shadow: 7px 7px 10px black;
-        font-family: $fancyStack;
-        
+        font-size: 15vw; //so that our title resizes automatically with screen size
+        @include title; //sets colour, shadow, and font
 
         transform-style: preserve-3d;
         animation-name: hover;
@@ -41,6 +38,9 @@
         animation-iteration-count: infinite;
         animation-direction: alternate;
 
+        @include tablet {
+            font-size: 12vw; //so that our title resizes automatically with screen size
+        }
         
     }
 
@@ -74,14 +74,16 @@
 
     &__button {
         background-color: $purple;
-        border-color: $gold;
-        color: $gold;
+        color: $white;
         font-family: $headerStack;
         width: 150px;
-        height: 30px;
-        border: 2px solid;
+        height: 50px;
+        border: 2px solid $white;
         border-radius: 10px;
         margin-top: 20px;
+        box-shadow: 3px 3px 8px black;
+        //get rid of default link underline
+        text-decoration: none;
         //center the text in the button
         display: flex;
         align-items: center;
