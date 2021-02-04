@@ -3,17 +3,19 @@
 //import partials
 @import "../../Partials/fonts";
 @import "../../Partials/mediaqueries";
+@import "../../Partials/animations";
+@import "../../Partials/colors";
 
 .welcomepage {
     //style the background image of the welcome page
     
     height: 100vh;
-    width: 100%;
+    width: 100vw;
 
     //styling for the content display
     display: flex;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
 
     &__bg {
         filter: blur(3px);
@@ -30,5 +32,68 @@
         font-size: 12vw; //so that our title resizes automatically with screen size
         text-shadow: 7px 7px 10px black;
         font-family: $fancyStack;
+        
+
+        transform-style: preserve-3d;
+        animation-name: hover;
+        animation-duration: 1.5s;
+        animation-timing-function:ease-in-out;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+
+        
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20vh;
+        @include tablet {
+            margin-top: 40vh;
+        }
+    }
+
+    &__buttons {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include tablet {
+            flex-direction: row;
+            width: 100%;
+            padding: 20px 40px;
+            justify-content: space-between;
+        }
+
+        @include desktop {
+            width: 500px;
+        }
+    }
+
+    &__button {
+        background-color: $purple;
+        border-color: $gold;
+        color: $gold;
+        font-family: $headerStack;
+        width: 150px;
+        height: 30px;
+        border: 2px solid;
+        border-radius: 10px;
+        margin-top: 20px;
+        //center the text in the button
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        transition: all 0.3s ease;
+        &:hover {
+            transform: translateY(-5px); //raise a bit on hover;
+        }
+
+        @include tablet {
+            margin: 0; //get rid of top margin once buttons are side by side
+        }
     }
 }
