@@ -1,6 +1,3 @@
-import logo from './logo.svg';
-import './App.css';
-
 //component imports
 import WelcomePage from "./Components/WelcomePage/WelcomePage";
 
