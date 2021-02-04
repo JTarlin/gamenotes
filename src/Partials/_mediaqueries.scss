@@ -1,0 +1,15 @@
+//for responsive resizing
+
+//for tablet sizes
+@mixin tablet {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+//for desktop sizes
+@mixin desktop {
+    @media (min-width: 1280px) {
+        @content;
+    }
+}
