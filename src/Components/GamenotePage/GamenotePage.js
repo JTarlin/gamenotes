@@ -5,6 +5,7 @@ import {useState} from "react";
 //component imports
 import Header from "../Header/Header";
 import InfoBlock from "./InfoBlock/InfoBlock";
+import NoteCanvas from "./NoteCanvas/NoteCanvas";
 
 //styling imports
 import "./GamenotePage.scss";
@@ -19,7 +20,7 @@ export default function GamenotePage(props) {
         <div className="gamenotepage">
             <Header />
             <section className="gamenote">
-                <div className="gamenote-canvas"></div>
+                <NoteCanvas />
                 <InfoBlock noteInfo={noteInfo}/>
             </section>
         </div>
