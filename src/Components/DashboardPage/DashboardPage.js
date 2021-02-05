@@ -13,6 +13,9 @@ export default function DashboardPage() {
     return (
         <div className="dashboardpage">
             <Header />
+            <div className="dashboardpage__title">
+                My Notes
+            </div>
             <section className="dashboardpage__content">
             {/* creating a new note, opens the editor */}
             <NewNote />
