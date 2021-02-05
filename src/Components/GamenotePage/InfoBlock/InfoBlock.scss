@@ -1,0 +1,12 @@
+@import "../../../Partials/fonts";
+
+
+.infoblock {
+    height: 300px;
+    width: 50%;
+    background-color: green;
+
+    &__title {
+        font-family: $headerStack;
+    }
+}

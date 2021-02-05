@@ -35,12 +35,6 @@
         }
     }
 
-    // @include tablet {
-    //     width: 300px;
-    //     border-bottom: none;
-    //     border-right: 2px solid $purple;
-    // }
-
     &__title {
         
         font-size: 20px;
@@ -67,6 +61,13 @@
         margin: 10px 0;
         padding: 3px;
         font-family: $fontStack;
+        border-radius: 5px;
+        border: 1px solid black;
+        
+
+        &--true {
+            border: 2px solid red;
+        }
     }
 
     &__button {
@@ -96,5 +97,15 @@
 
     &__true {
         display: flex;
+    }
+}
+
+.warning {
+    //the warning text that appears
+    &__text {
+        color: red;
+        font-family: $fontStack;
+        font-weight:bold;
+        margin-bottom: 10px;
     }
 }
