@@ -1,12 +1,27 @@
 //import partials
 @import "../../Partials/mediaqueries";
+@import "../../Partials/fonts";
+@import "../../Partials/colors";
 
 .dashboardpage {
     display: flex;
     flex-direction: column;
+    align-items: center;
 
+    &__title {
+        text-align: center;
+        font-family: $headerStack;
+        font-size: 10vw;
+        color: $purple;
+        text-shadow: 3px 3px 8px black;
+
+        @include tablet {
+            font-size: 60px;
+        }
+    }
 
     &__content {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
