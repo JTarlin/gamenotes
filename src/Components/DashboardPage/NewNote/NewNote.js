@@ -23,7 +23,6 @@ export default function NewNote() {
         if(event.target.formName.value) {
             //if there is a name, proceed to gamenotepage with form inputs as props
             setWarning(false);
-            console.log(history);
             history.push({pathname: "/gamenote", state: {name: formName, desc: formDesc}});
         } else {
             //if user tries to create a new note without a title, give a warning
