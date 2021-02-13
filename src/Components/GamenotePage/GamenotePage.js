@@ -42,7 +42,7 @@ export default function GamenotePage(props) {
         <div className="gamenotepage">
             <Header />
             <section className="gamenote">
-                <NoteCanvas graph={graph} />
+                <NoteCanvas graph={graph} setNoteInfo={setNoteInfo} />
                 <InfoBlock noteInfo={noteInfo}/>
             </section>
         </div>
