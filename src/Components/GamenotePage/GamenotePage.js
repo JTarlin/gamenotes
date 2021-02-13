@@ -11,10 +11,19 @@ import NoteCanvas from "./NoteCanvas/NoteCanvas";
 import "./GamenotePage.scss";
 
 export default function GamenotePage(props) {
-
-    //get history state
+    //get history hook
     const history = useHistory();
-    const [noteInfo, setNoteInfo] = useState(history.location.state);
+
+    //make the page robust to loads from direct url
+    let tempNoteInfo;
+    if(history.location.state) {
+        tempNoteInfo = history.location.state;
+    } else {
+        //eventually we might want to load this in from recently closed notes
+        tempNoteInfo = {desc: "", name: "Untitled Note"};
+    }
+
+    const [noteInfo, setNoteInfo] = useState(tempNoteInfo);
 
     //gameenotepage holds all the info for the network graph
     const [graph, setGraph] = useState({nodes: [], edges: []})
@@ -35,6 +44,14 @@ export default function GamenotePage(props) {
                 { from: 2, to: 5 }
             ]
         })
+    }
+
+    const addNode = (nodeName)=> {
+        let currentNodes = graph.nodes;
+        let nodeCount = currentNodes.length;
+        const newNode = {id: nodeCount, label: nodeName}
+        let newNodes = currentNodes.push(newNode);
+        setGraph({...graph, nodes: newNodes})
     }
     
 
