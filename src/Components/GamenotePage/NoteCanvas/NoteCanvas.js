@@ -25,12 +25,14 @@ export default function NoteCanvas(props) {
 
     return (
         <div className="gamenote-canvas">
-        <div className="canvasTitle">Canvas Title</div>
-        <Graph 
-            graph={graph}
-            options={options}
-            events={events}
-        />
+            <div className="canvasTitle">Canvas Title</div>
+            <div className="canvasContainer">
+                <Graph 
+                    graph={graph}
+                    options={options}
+                    events={events}
+                />
+            </div>
         </div>
     )
 
