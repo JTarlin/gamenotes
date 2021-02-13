@@ -1,0 +1,15 @@
+@import "../../Partials/mediaqueries";
+
+.gamenotepage {
+    display: flex;
+    flex-direction: column;
+}
+
+.gamenote {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+        flex-direction: row;
+    }
+}
+
