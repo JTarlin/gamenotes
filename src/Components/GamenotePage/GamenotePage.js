@@ -31,8 +31,9 @@ export default function GamenotePage(props) {
 
     //gameenotepage holds all the info for the network graph
     const [graph, setGraph] = useState({nodes: [], edges: []})
+    console.log("logging the gamenotepage graph contents",graph);
     if(!graph.nodes[0]){ //if there are NO nodes, set a default network
-        console.log("empty");
+        console.log("the graph nodes currently contains no nodes");
         setGraph({
             nodes: [
                 { id: 1, label: 'Node 1', desc: "The first node" },
@@ -52,11 +53,19 @@ export default function GamenotePage(props) {
 
     //this function adds a new node to the graph data
     const addNode = (nodeName)=> {
+        console.log("add node has been called");
         let currentNodes = graph.nodes;
-        let nodeCount = currentNodes.length;
-        const newNode = {id: nodeCount, label: nodeName}
-        let newNodes = currentNodes.push(newNode);
-        setGraph({...graph, nodes: newNodes})
+        let highestNode = currentNodes[currentNodes.length-1].id;
+        console.log("the current highest node is:", highestNode);
+        let newNode;
+        if(nodeName){
+            newNode = {id: highestNode+1, label: nodeName, desc: "Newly spawned node"};
+        } else {
+            newNode = {id: highestNode+1, label: "Node "+(highestNode+1), desc: "Newly spawned node"};
+        }
+       
+        currentNodes.push(newNode);
+        setGraph({...graph, nodes: currentNodes});
     }
     
     useEffect(()=>{
@@ -74,8 +83,8 @@ export default function GamenotePage(props) {
         <div className="gamenotepage">
             <Header />
             <section className="gamenote">
-                <NoteCanvas graph={graph} setSelection={setSelection}/>
-                <InfoBlock selectionInfo={selectionInfo}/>
+                <NoteCanvas title={noteInfo.name} graph={graph} setSelection={setSelection}/>
+                <InfoBlock selectionInfo={selectionInfo} selection={selection} addNode={addNode}/>
             </section>
         </div>
     )

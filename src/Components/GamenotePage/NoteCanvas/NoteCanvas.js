@@ -6,10 +6,12 @@ import "./NoteCanvas.scss";
 
 export default function NoteCanvas(props) {
     console.log("canvas render");
+    console.log("graph passed to notecanvas:", props.graph);
 
     const setSelection = props.setSelection;
 
     let graph = props.graph;
+    let title = props.title;
 
     let options = {
         layout: {
@@ -38,13 +40,14 @@ export default function NoteCanvas(props) {
                 setSelection({elementType: 1, id: 1});
             }
         },
-        
+
     };
 
     return (
         <div className="gamenote-canvas">
-            <div className="canvasTitle">Canvas Title</div>
+            <div className="canvasTitle">{title}</div>
             <div className="canvasContainer">
+                {console.log("about to render the vis graph react element",graph)}
                 <Graph 
                     graph={graph}
                     options={options}
