@@ -1,5 +1,6 @@
 //dependency imports
-import Graph from "vis-react";
+import Graph from "react-graph-vis";
+import {useState, useEffect} from "react";
 
 //styling import
 import "./NoteCanvas.scss";
@@ -9,9 +10,9 @@ export default function NoteCanvas(props) {
     console.log("graph passed to notecanvas:", props.graph);
 
     const setSelection = props.setSelection;
-
-    let graph = props.graph;
     let title = props.title;
+    // let graph=props.graph;
+    const [graph, setGraph] = useState(props.graph);
 
     let options = {
         layout: {
@@ -22,8 +23,13 @@ export default function NoteCanvas(props) {
             arrows: {to: {enabled: false}, from:{enabled:false}}, //this one simply disables arrowheads on the graph edges
 
         },
-        interaction: { hoverEdges: true }
+        interaction: { hover: true }
     };
+
+    useEffect(()=>{
+        console.log("useeffect triggering to set the state of graph held in the state");
+        setGraph(props.graph);
+    }, [props.graph])
      
     let events = {
         select: function(event) {
@@ -40,7 +46,6 @@ export default function NoteCanvas(props) {
                 setSelection({elementType: 1, id: 1});
             }
         },
-
     };
 
     return (
@@ -48,7 +53,7 @@ export default function NoteCanvas(props) {
             <div className="canvasTitle">{title}</div>
             <div className="canvasContainer">
                 {console.log("about to render the vis graph react element",graph)}
-                <Graph 
+                <Graph
                     graph={graph}
                     options={options}
                     events={events}
