@@ -72,7 +72,7 @@ export default function GamenotePage(props) {
         }// else if(selection.elementType===3){
         //     setSelectionInfo({name: graph.nodes[selection.id].label, desc: graph.nodes[selection.id].desc})
         // }
-    }, [selection])
+    }, [selection, noteInfo, graph.nodes])
 
     return (
         <div className="gamenotepage">

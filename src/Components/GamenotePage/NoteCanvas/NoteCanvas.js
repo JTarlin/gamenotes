@@ -9,10 +9,13 @@ export default function NoteCanvas(props) {
     console.log("canvas render");
     console.log("graph passed to notecanvas:", props.graph);
 
+    const graph = props.graph;
+
     const setSelection = props.setSelection;
     let title = props.title;
     // let graph=props.graph;
-    const [graph, setGraph] = useState(props.graph);
+    // const [graph, setGraph] = useState(props.graph);
+    const [network, setNetwork] = useState(null); //start network as empty
 
     let options = {
         layout: {
@@ -28,9 +31,13 @@ export default function NoteCanvas(props) {
 
     useEffect(()=>{
         console.log("useeffect triggering to set the state of graph held in the state");
-        setGraph(props.graph);
-    }, [props.graph])
+        if(network){
+            network.setData(graph);
+        }
+    }, [graph])
      
+    // console.log("logging selected nodes to check if network is working", network.getSelectedNodes());
+
     let events = {
         select: function(event) {
             var { nodes, edges } = event;
@@ -57,6 +64,7 @@ export default function NoteCanvas(props) {
                     graph={graph}
                     options={options}
                     events={events}
+                    getNetwork={network=>{setNetwork(network)}}
                 />
             </div>
         </div>
