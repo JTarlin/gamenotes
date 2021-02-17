@@ -3,7 +3,9 @@ import "./InfoBlock.scss";
 
 export default function InfoBlock(props) {
     const selectedType=props.selection.elementType;
+    const selectedId = props.selection.id;
     const addNode = props.addNode;
+    const deleteNode = props.deleteNode;
 
     return (
         <div className="infoblock">
@@ -12,6 +14,10 @@ export default function InfoBlock(props) {
             {selectedType===1 && 
             <div className="infoblock__button" onClick={()=>{addNode(null)}}>
                 Add New Node
+            </div>}
+            {selectedType===2 && 
+            <div className="infoblock__button" onClick={()=>{deleteNode(selectedId)}}>
+                Delete Node
             </div>}
         </div>
     )

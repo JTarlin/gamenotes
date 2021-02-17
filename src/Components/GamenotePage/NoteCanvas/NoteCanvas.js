@@ -13,8 +13,6 @@ export default function NoteCanvas(props) {
 
     const setSelection = props.setSelection;
     let title = props.title;
-    // let graph=props.graph;
-    // const [graph, setGraph] = useState(props.graph);
     const [network, setNetwork] = useState(null); //start network as empty
 
     let options = {

@@ -63,6 +63,27 @@ export default function GamenotePage(props) {
         currentNodes.push(newNode);
         setGraph({...graph, nodes: currentNodes});
     }
+
+    const deleteNode = (nodeId)=>{
+        let currentNodes = graph.nodes;
+        //delete the node with nodeID given
+        for(let i=0; i<currentNodes.length; i++){
+            if(currentNodes[i].id===nodeId){
+                currentNodes.splice(i, 1);
+                break;
+            }
+        }
+        //next, go through and delete all edges referring to that node
+        let currentEdges = graph.edges;
+        for(let i=graph.edges.length-1;i>=0;i--){
+            if(graph.edges[i].from===nodeId || graph.edges[i].to===nodeId){
+                currentEdges.splice(i, 1);
+            }
+        }
+        setGraph({edges: currentEdges, nodes: currentNodes});
+        //we can no longer have this ndoe selected, because we have deleted it - select canvas instead
+        setSelection({elementType: 1, id:1});
+    }
     
     useEffect(()=>{
         if(selection.elementType===1){//if the canvas was selected
@@ -79,7 +100,7 @@ export default function GamenotePage(props) {
             <Header />
             <section className="gamenote">
                 <NoteCanvas title={noteInfo.name} graph={graph} setSelection={setSelection}/>
-                <InfoBlock selectionInfo={selectionInfo} selection={selection} addNode={addNode}/>
+                <InfoBlock selectionInfo={selectionInfo} selection={selection} addNode={addNode} deleteNode={deleteNode}/>
             </section>
         </div>
     )
