@@ -30,26 +30,24 @@ export default function NoteCanvas(props) {
     };
 
     useEffect(()=>{
-        console.log("useeffect triggering to set the state of graph held in the state");
+        //on change of graph data, update network to show this data
         if(network){
             network.setData(graph);
         }
     }, [graph])
-     
-    // console.log("logging selected nodes to check if network is working", network.getSelectedNodes());
+    
 
     let events = {
         select: function(event) {
             var { nodes, edges } = event;
-            console.log("selected something on the canvas");
             if (nodes.length === 1) {
-                console.log("selected a node", nodes);
+                //selected a node
                 setSelection({elementType: 2, id: nodes[0]});
             } else if(edges.length===1){
-                console.log("selected an edge", edges);
+                //selected an edge
                 setSelection({elementType: 3, id: edges[0]});
             } else {
-                console.log("selected blank canvas area");
+                //selected blank canvas area
                 setSelection({elementType: 1, id: 1});
             }
         },
@@ -59,7 +57,6 @@ export default function NoteCanvas(props) {
         <div className="gamenote-canvas">
             <div className="canvasTitle">{title}</div>
             <div className="canvasContainer">
-                {console.log("about to render the vis graph react element",graph)}
                 <Graph
                     graph={graph}
                     options={options}

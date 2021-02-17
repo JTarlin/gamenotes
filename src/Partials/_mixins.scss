@@ -1,0 +1,22 @@
+//mixin for resuable components
+
+//import partials 
+@import "./fonts";
+
+@mixin button($primary, $secondary) {
+    background-color: $primary;
+    color: $secondary;
+    font-family: $headerStack;
+    border: 2px solid $secondary;
+    border-radius: 10px;
+    box-shadow: 3px 3px 8px black;
+    //center the text in the button
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    &:hover {
+        transform: translateY(-5px); //raise a bit on hover;
+        cursor: pointer;
+    }
+}

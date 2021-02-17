@@ -2,6 +2,7 @@
 @import "../../../Partials/fonts";
 @import "../../../Partials/mediaqueries";
 @import "../../../Partials/colors";
+@import "../../../Partials/mixins";
 
 
 .infoblock {
@@ -34,5 +35,11 @@
     &__description {
         font-family: $fontStack;
         width: 90%;
+    }
+
+    &__button {
+        @include button($purple, white);
+        padding: 6px 12px;
+        font-size: 18px;
     }
 }
