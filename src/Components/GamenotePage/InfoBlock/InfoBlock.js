@@ -5,6 +5,7 @@ import "./InfoBlock.scss";
 import InlineEdit from "../../InlineEdit/InlineEdit";
 
 export default function InfoBlock(props) {
+    console.log("re-rendering info block, here is the info on the new selection:", props.selectionInfo );
     const selectedType=props.selection.elementType;
     const selectedId = props.selection.id;
     const addNode = props.addNode;

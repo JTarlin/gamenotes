@@ -89,7 +89,16 @@ export default function GamenotePage(props) {
         if(selection.elementType===1){//if the canvas was selected
             setSelectionInfo(noteInfo);
         } else if(selection.elementType===2){ //if we selected a node
-            setSelectionInfo({name: graph.nodes[selection.id-1].label, desc: graph.nodes[selection.id-1].desc})
+            //because nodes can be added and deleted, we need to find the current position in the array of the selected node
+            let arrayPos;
+            for(let i=0;i<graph.nodes.length;i++){
+                if(graph.nodes[i].id===selection.id){
+                    arrayPos = i;
+                    break;
+                }
+            }
+            console.log("arrayPos is:",arrayPos);
+            setSelectionInfo({name: graph.nodes[arrayPos].label, desc: graph.nodes[arrayPos].desc})
         }// else if(selection.elementType===3){
         //     setSelectionInfo({name: graph.nodes[selection.id].label, desc: graph.nodes[selection.id].desc})
         // }

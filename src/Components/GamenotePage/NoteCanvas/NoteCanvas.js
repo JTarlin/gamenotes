@@ -38,7 +38,9 @@ export default function NoteCanvas(props) {
     let events = {
         select: function(event) {
             var { nodes, edges } = event;
+
             if (nodes.length === 1) {
+                console.log("we have just selected node#", nodes);
                 //selected a node
                 setSelection({elementType: 2, id: nodes[0]});
             } else if(edges.length===1){

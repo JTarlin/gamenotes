@@ -2,6 +2,9 @@
 import {useState, createRef} from "react";
 import useOnClickOutside from "../Hooks/useOnClickOutside/useOnClickOutside";
 
+//import styling
+import "./InlineEdit.scss";
+
 export default function InlineEdit(props) {
     const text = props.text;
     //tracks if we are currently editing or not
@@ -35,9 +38,9 @@ export default function InlineEdit(props) {
         <>
             {editing
              //if we are editing display the input box
-            ? <input value={inputValue} onChange={handleChange} onKeyDown={checkForSubmit} ref={editingBoxRef}/>
+            ? <input value={inputValue} onChange={handleChange} onKeyDown={checkForSubmit} ref={editingBoxRef} className="inline-edit__input"/>
             //if we are not editing simply display the span
-            : <span onClick={toggleEditing}>{inputValue}</span>
+            : <span onClick={toggleEditing} className="inline-edit__input">{inputValue}</span>
             }
         </>
     )
