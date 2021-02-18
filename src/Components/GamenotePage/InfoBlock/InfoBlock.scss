@@ -44,6 +44,9 @@
     &__description {
         font-family: $fontStack;
         width: 90%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
     }
 
     &__button {
