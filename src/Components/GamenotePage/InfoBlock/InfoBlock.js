@@ -1,6 +1,9 @@
 //styling import
 import "./InfoBlock.scss";
 
+//component import
+import InlineEdit from "../../InlineEdit/InlineEdit";
+
 export default function InfoBlock(props) {
     const selectedType=props.selection.elementType;
     const selectedId = props.selection.id;
@@ -19,6 +22,7 @@ export default function InfoBlock(props) {
             <div className="infoblock__button" onClick={()=>{deleteNode(selectedId)}}>
                 Delete Node
             </div>}
+            <InlineEdit text={"test inline edit"} />
         </div>
     )
 }
