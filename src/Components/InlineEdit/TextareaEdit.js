@@ -1,11 +1,12 @@
 //dependency imprts
 import {useState, createRef, useEffect} from "react";
 import useOnClickOutside from "../Hooks/useOnClickOutside/useOnClickOutside";
+import TextareaAutosize from 'react-textarea-autosize';
 
 //import styling
-import "./InlineEdit.scss";
+import "../InlineEdit/InlineEdit.scss";
 
-export default function InlineEdit(props) {
+export default function TextareaEdit(props) {
     const {text, selection, updateInfo} = props;
     //tracks if we are currently editing or not
     const [editing, setEditing] = useState(false);
@@ -18,9 +19,9 @@ export default function InlineEdit(props) {
     useOnClickOutside(editingBoxRef, ()=>{
         if(editing){
             toggleEditing();
-            //we are editing the name property
-            updateInfo(selection.elementType, selection.id, inputValue, null);
-            
+            //we are editing the desc property
+            updateInfo(selection.elementType, selection.id, null, inputValue);
+
         }
     })
 
@@ -35,22 +36,22 @@ export default function InlineEdit(props) {
     }
 
     const checkForSubmit = (event)=>{
-        if(event.key==="Enter"){
+        if(event.key==="Escape"){
             toggleEditing();
-            //we are editing the name property
-            updateInfo(selection.elementType, selection.id, inputValue, null);
+            //we are editing the desc property
+            updateInfo(selection.elementType, selection.id, null, inputValue);
         }
     }
 
-    useEffect(()=>{setInputValue(text)}, [text])
+    useEffect(()=>{setInputValue(text)}, [text]);
 
     return(
         <>
             {editing
              //if we are editing display the input box
-            ? <input value={inputValue} onChange={handleChange} onKeyDown={checkForSubmit} ref={editingBoxRef} className="inline-edit__input"/>
+            ? <TextareaAutosize value={inputValue} onChange={handleChange} onKeyDown={checkForSubmit} ref={editingBoxRef} className="inline-edit__input"/>
             //if we are not editing simply display the span
-            : <span onClick={toggleEditing} className="inline-edit__text--title">{inputValue}</span>
+            : <span onClick={toggleEditing} className="inline-edit__text--body">{inputValue}</span>
             }
         </>
     )

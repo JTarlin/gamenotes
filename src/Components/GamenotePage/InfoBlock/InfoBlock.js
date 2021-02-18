@@ -3,6 +3,7 @@ import "./InfoBlock.scss";
 
 //component import
 import InlineEdit from "../../InlineEdit/InlineEdit";
+import TextareaEdit from "../../InlineEdit/TextareaEdit";
 
 export default function InfoBlock(props) {
     const selectedType=props.selection.elementType;
@@ -12,10 +13,10 @@ export default function InfoBlock(props) {
     return (
         <div className="infoblock">
             <div className="infoblock__title">
-                <InlineEdit text={props.selectionInfo.name} selection={props.selection} updateInfo={updateInfo} type={1}/>
+                <InlineEdit text={props.selectionInfo.name} selection={props.selection} updateInfo={updateInfo}/>
             </div>
             <div className="infoblock__description">
-                <InlineEdit text={props.selectionInfo.desc} selection={props.selection} updateInfo={updateInfo} type={2}/>
+                <TextareaEdit text={props.selectionInfo.desc} selection={props.selection} updateInfo={updateInfo}/>
             </div>
             {selectedType===1 && 
             <div className="infoblock__button" onClick={()=>{addNode(null)}}>

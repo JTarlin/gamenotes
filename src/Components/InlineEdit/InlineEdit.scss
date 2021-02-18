@@ -15,13 +15,21 @@
     }
 
     &__text {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+        
         width: 100%;
 
         &:hover{
             cursor: pointer;
+        }
+
+        &--title {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        &--body {
+            white-space: pre-wrap;
         }
     }
 }
