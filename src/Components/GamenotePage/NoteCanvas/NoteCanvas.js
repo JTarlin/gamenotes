@@ -6,9 +6,6 @@ import {useState, useEffect} from "react";
 import "./NoteCanvas.scss";
 
 export default function NoteCanvas(props) {
-    console.log("canvas render");
-    console.log("graph passed to notecanvas:", props.graph);
-
     const graph = props.graph;
 
     const setSelection = props.setSelection;
@@ -40,7 +37,6 @@ export default function NoteCanvas(props) {
             var { nodes, edges } = event;
 
             if (nodes.length === 1) {
-                console.log("we have just selected node#", nodes);
                 //selected a node
                 setSelection({elementType: 2, id: nodes[0]});
             } else if(edges.length===1){

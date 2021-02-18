@@ -5,6 +5,22 @@
     font-size: inherit;
 
     &__input {
+        // border: none;
+        outline: none;
+        background: none;
+        font-family: inherit;
+        font-size: inherit;
+        text-align: inherit;
+        width: 100%;
+    }
 
+    &__text {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        &:hover{
+            cursor: pointer;
+        }
     }
 }

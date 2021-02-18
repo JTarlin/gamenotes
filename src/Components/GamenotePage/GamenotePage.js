@@ -84,6 +84,34 @@ export default function GamenotePage(props) {
         //we can no longer have this ndoe selected, because we have deleted it - select canvas instead
         setSelection({elementType: 1, id:1});
     }
+
+    const updateInfo = (elementType, id, newName, newDesc)=>{
+        if(elementType===1) { //if we are updating the canvas info
+            if(newName) {
+                setNoteInfo({name: newName, desc: noteInfo.desc});
+                setSelectionInfo({name: newName, desc: noteInfo.desc});
+            } else if(newDesc){
+                setNoteInfo({name: noteInfo.name, desc: newDesc});
+                setSelectionInfo({name: noteInfo.name, desc: newDesc});
+            }
+        } else if(elementType===2){//if we are instead updating the info for a node
+            //find the node with nodeID given
+            let currentNodes=graph.nodes;
+            for(let i=0; i<currentNodes.length; i++){
+                if(currentNodes[i].id===id){ //if we find the node in the array we are looking to update
+                    if(newName) {
+                        currentNodes[i].label = newName;
+                        setSelectionInfo({...selectionInfo, name: newName});
+                    } else if(newDesc){
+                        currentNodes[i].desc = newDesc;
+                        setSelectionInfo({...selectionInfo, desc: newDesc});
+                    }
+                    setGraph({...graph, nodes: currentNodes});
+                    break;
+                }
+            }
+        }
+    }
     
     useEffect(()=>{
         if(selection.elementType===1){//if the canvas was selected
@@ -97,7 +125,6 @@ export default function GamenotePage(props) {
                     break;
                 }
             }
-            console.log("arrayPos is:",arrayPos);
             setSelectionInfo({name: graph.nodes[arrayPos].label, desc: graph.nodes[arrayPos].desc})
         }// else if(selection.elementType===3){
         //     setSelectionInfo({name: graph.nodes[selection.id].label, desc: graph.nodes[selection.id].desc})
@@ -109,7 +136,7 @@ export default function GamenotePage(props) {
             <Header />
             <section className="gamenote">
                 <NoteCanvas title={noteInfo.name} graph={graph} setSelection={setSelection}/>
-                <InfoBlock selectionInfo={selectionInfo} selection={selection} addNode={addNode} deleteNode={deleteNode}/>
+                <InfoBlock selectionInfo={selectionInfo} selection={selection} addNode={addNode} deleteNode={deleteNode} updateInfo={updateInfo}/>
             </section>
         </div>
     )

@@ -8,7 +8,7 @@
 .infoblock {
     height: 300px;
     width: 100%;
-    background-color: green;
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,13 +22,22 @@
         margin-top: 20px;
         font-size: 20px;
         font-family: $headerStack;
+        width: 200px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
 
         @include tablet {
             font-size: 3vw;
+            height: 4vw;
+            width: 50%;
         }
 
         @include desktop {
             font-size: 40px;
+            height: 50px;
         }
     }
 
