@@ -1,0 +1,47 @@
+//import partials
+@import "../../Partials/colors";
+@import "../../Partials/mixins";
+
+.inline-edit {
+    font-family: inherit;
+    font-size: inherit;
+
+    &__input {
+        // border: none;
+        outline: none;
+        background: none;
+        font-family: inherit;
+        font-size: inherit;
+        text-align: inherit;
+        width: 100%;
+        resize: none;
+        @include scrollbars(10px, $purple, $violet);
+    }
+
+    &__text {
+        
+        
+        width: 100%;
+        
+
+        &:hover{
+            cursor: pointer;
+        }
+
+        &--title {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        &--body {
+            font-size: 16px;
+            line-height: 20px;
+            white-space: pre-wrap;
+            max-height: 200px;
+            width: 100%;
+            overflow-y: auto;
+            @include scrollbars(10px, $purple, $violet);
+        }
+    }
+}

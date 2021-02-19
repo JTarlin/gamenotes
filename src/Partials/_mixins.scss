@@ -1,0 +1,51 @@
+//mixin for resuable components
+
+//import partials 
+@import "./fonts";
+@import "./colors";
+
+@mixin button($primary, $secondary) {
+    background-color: $primary;
+    color: $secondary;
+    font-family: $headerStack;
+    border: 2px solid $secondary;
+    border-radius: 10px;
+    box-shadow: 3px 3px 8px black;
+    //center the text in the button
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    &:hover {
+        transform: translateY(-5px); //raise a bit on hover;
+        cursor: pointer;
+    }
+}
+
+
+//downloaded this scrollbar mixin from css-tricks https://css-tricks.com/snippets/sass/custom-scrollbars-mixin/
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+
+    scrollbar-color: $foreground-color $background-color;
+    scrollbar-width: $size;
+
+    // For Google Chrome
+    &::-webkit-scrollbar {
+      width:  $size;
+      height: $size;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: $foreground-color;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: $background-color;
+    }
+  
+    // For Internet Explorer
+    & {
+      scrollbar-face-color: $foreground-color;
+      scrollbar-track-color: $background-color;
+    }
+  }
