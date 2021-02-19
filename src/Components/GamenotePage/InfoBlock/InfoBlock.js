@@ -8,7 +8,7 @@ import TextareaEdit from "../../InlineEdit/TextareaEdit";
 export default function InfoBlock(props) {
     const selectedType=props.selection.elementType;
     const selectedId = props.selection.id;
-    const {addNode, deleteNode, updateInfo} = props;
+    const {addNode, deleteNode, updateInfo, addConnected} = props;
 
     return (
         <div className="infoblock">
@@ -23,8 +23,13 @@ export default function InfoBlock(props) {
                 Add New Node
             </div>}
             {selectedType===2 && 
-            <div className="infoblock__button" onClick={()=>{deleteNode(selectedId)}}>
-                Delete Node
+            <div className="infoblock__buttonbox">
+                <div className="infoblock__button" onClick={()=>{addConnected(selectedId)}}>
+                    Add Connected
+                </div>
+                <div className="infoblock__button" onClick={()=>{deleteNode(selectedId)}}>
+                    Delete Node
+                </div>
             </div>}
         </div>
     )

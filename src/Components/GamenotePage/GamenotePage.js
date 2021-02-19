@@ -1,6 +1,7 @@
 //dependency imports
 import {useHistory} from "react-router-dom";
 import {useEffect, useState} from "react";
+import { v4 as uuidv4 } from "uuid";
 
 //component imports
 import Header from "../Header/Header";
@@ -30,7 +31,7 @@ export default function GamenotePage(props) {
     const [selectionInfo, setSelectionInfo] = useState(tempNoteInfo);
 
     //gameenotepage holds all the info for the network graph
-    const [graph, setGraph] = useState({nodes: [], edges: []})
+    const [graph, setGraph] = useState({nodes: [], edges: []});
     if(!graph.nodes[0]){ //if there are NO nodes, set a default network
         setGraph({
             nodes: [
@@ -62,6 +63,21 @@ export default function GamenotePage(props) {
        
         currentNodes.push(newNode);
         setGraph({...graph, nodes: currentNodes});
+    }
+
+    const addConnected = (nodeId) =>{
+        //adds a new node and an edge connecting it to the current node
+        //get the current nodes and edges
+        let currentGraph = graph;
+        //get highest node so that our new node won't have an overlapping id
+        let highestNode = currentGraph.nodes[currentGraph.nodes.length-1].id;
+        //create a new node
+        let newNode = {id: highestNode+1, label: "Node "+(highestNode+1), desc: "Newly spawned node"};
+        currentGraph.nodes.push(newNode);
+        //create an edge matching our current node to the new node
+        let newEdge = {from: nodeId, to: highestNode+1, id: uuidv4()};
+        currentGraph.edges.push(newEdge);
+        setGraph({nodes: currentGraph.nodes, edges: currentGraph.edges});
     }
 
     const deleteNode = (nodeId)=>{
@@ -136,7 +152,7 @@ export default function GamenotePage(props) {
             <Header />
             <section className="gamenote">
                 <NoteCanvas title={noteInfo.name} graph={graph} setSelection={setSelection}/>
-                <InfoBlock selectionInfo={selectionInfo} selection={selection} addNode={addNode} deleteNode={deleteNode} updateInfo={updateInfo}/>
+                <InfoBlock selectionInfo={selectionInfo} selection={selection} addNode={addNode} addConnected={addConnected} deleteNode={deleteNode} updateInfo={updateInfo}/>
             </section>
         </div>
     )

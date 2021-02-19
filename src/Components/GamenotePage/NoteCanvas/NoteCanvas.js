@@ -7,7 +7,6 @@ import "./NoteCanvas.scss";
 
 export default function NoteCanvas(props) {
     const graph = props.graph;
-
     const setSelection = props.setSelection;
     let title = props.title;
     const [network, setNetwork] = useState(null); //start network as empty
@@ -29,7 +28,7 @@ export default function NoteCanvas(props) {
         if(network){
             network.setData(graph);
         }
-    }, [graph])
+    }, [graph, network])
     
 
     let events = {

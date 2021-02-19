@@ -2,6 +2,7 @@
 
 //import partials 
 @import "./fonts";
+@import "./colors";
 
 @mixin button($primary, $secondary) {
     background-color: $primary;
@@ -20,3 +21,31 @@
         cursor: pointer;
     }
 }
+
+
+//downloaded this scrollbar mixin from css-tricks https://css-tricks.com/snippets/sass/custom-scrollbars-mixin/
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+
+    scrollbar-color: $foreground-color $background-color;
+    scrollbar-width: $size;
+
+    // For Google Chrome
+    &::-webkit-scrollbar {
+      width:  $size;
+      height: $size;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: $foreground-color;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: $background-color;
+    }
+  
+    // For Internet Explorer
+    & {
+      scrollbar-face-color: $foreground-color;
+      scrollbar-track-color: $background-color;
+    }
+  }

@@ -49,7 +49,7 @@ export default function TextareaEdit(props) {
         <>
             {editing
              //if we are editing display the input box
-            ? <TextareaAutosize value={inputValue} onChange={handleChange} onKeyDown={checkForSubmit} ref={editingBoxRef} className="inline-edit__input"/>
+            ? <TextareaAutosize value={inputValue} onChange={handleChange} onKeyDown={checkForSubmit} maxRows={10} ref={editingBoxRef} className="inline-edit__input"/>
             //if we are not editing simply display the span
             : <span onClick={toggleEditing} className="inline-edit__text--body">{inputValue}</span>
             }
